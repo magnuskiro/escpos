@@ -54,7 +54,8 @@ export default class Network extends Adapter {
     public async write(data: Uint8Array): Promise<void> {
         return new Promise<void>(resolve => {
             this.throwIfNeeded();
-            this.device.write(new Buffer(data), resolve);
+            // Changed to null from resolve; Definitely not sure what that does... Have to ask Lian about it.
+            this.device.write(Buffer.from(data), null);
         });
     }
 
